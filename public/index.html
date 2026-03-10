@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UUP</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="tabbar">
+  <div class="tab active">
+    <span class="tab-icon">📄</span>
+    <span class="tab-title">New Tab</span>
+    <span class="tab-close" onclick="this.parentElement.remove()">×</span>
+  </div>
+  <div class="tab">
+    <span class="tab-icon">📚</span>
+    <span class="tab-title">Study Hall</span>
+    <span class="tab-close" onclick="this.parentElement.remove()">×</span>
+  </div>
+  <div class="tab">
+    <span class="tab-icon">📝</span>
+    <span class="tab-title">Notes</span>
+    <span class="tab-close" onclick="this.parentElement.remove()">×</span>
+  </div>
+  <div class="tab new-tab-btn" onclick="addTab()">+</div>
+</div>
+
+<div class="addressbar">
+  <div class="nav-btns">
+    <button onclick="history.back()">&#8592;</button>
+    <button onclick="history.forward()">&#8594;</button>
+    <button onclick="location.reload()">&#8635;</button>
+  </div>
+  <div class="url-box" onclick="focusSearch()">
+    <span class="lock">🔒</span>
+    <span class="url-text" id="url-display">uup://newtab</span>
+  </div>
+  <div class="nav-extra">⋮</div>
+</div>
+
+<div class="main" id="main-view">
+  <div class="logo-wrap">
+    <div class="logo">UUP</div>
+    <div class="logo-line"></div>
+  </div>
+
+  <div class="search-wrap">
+    <input type="text" id="search-input"
+      placeholder="Search DuckDuckGo or enter address"
+      autocomplete="off" spellcheck="false"
+      onkeydown="if(event.key==='Enter') doSearch()">
+    <select id="engine-select">
+      <option value="ddg">DuckDuckGo</option>
+      <option value="google">Google</option>
+      <option value="bing">Bing</option>
+    </select>
+  </div>
+
+  <div class="quicklinks">
+    <div class="ql" onclick="doProxy('https://youtube.com')">
+      <div class="ql-icon">▶</div>
+      <div class="ql-label">Videos</div>
+    </div>
+    <div class="ql" onclick="doProxy('https://tiktok.com')">
+      <div class="ql-icon">♪</div>
+      <div class="ql-label">TikTok</div>
+    </div>
+    <div class="ql" onclick="doProxy('https://now.gg')">
+      <div class="ql-icon">🎮</div>
+      <div class="ql-label">Games</div>
+    </div>
+    <div class="ql" onclick="doProxy('https://chat.openai.com')">
+      <div class="ql-icon">✦</div>
+      <div class="ql-label">AI</div>
+    </div>
+    <div class="ql" onclick="doProxy('https://discord.com/app')">
+      <div class="ql-icon">#</div>
+      <div class="ql-label">Discord</div>
+    </div>
+    <div class="ql add-ql">
+      <div class="ql-icon">+</div>
+      <div class="ql-label">Add</div>
+    </div>
+  </div>
+</div>
+
+<!-- Proxy iframe -->
+<iframe id="proxy-frame" style="display:none;position:fixed;inset:0;width:100%;height:100%;border:none;z-index:999;"></iframe>
+
+<script src="app.js"></script>
+</body>
+</html>
